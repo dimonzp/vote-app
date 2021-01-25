@@ -1,0 +1,21 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr
+}
+
+.header{
+  display: flex;
+  justify-content:center;
+}
+
+.buttonVote{
+  display: flex;
+  justify-content: center;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
