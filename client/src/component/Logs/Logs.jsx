@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { loadLogs } from "../../store/logs/actions";
-import { getDate } from "../../utils/getDate";
 import { Alert } from "react-bootstrap";
+import { getDate } from "../../utils/getDate";
+
+
 
 const Logs = (props) => {
   useEffect(() => {
@@ -15,7 +17,7 @@ const Logs = (props) => {
     <div>
       {props.logs.map((l) => {
           
-        const date = `${getDate(new Date(l.date), true)} ${l.url} {${l.json}}`;
+        const date = `${getDate(new Date(l.date), true, true)} ${l.url} {${l.json}}`;
         return (
           <div>
               

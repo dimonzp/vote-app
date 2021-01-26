@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import PieContainer from "./Pie/PieContainer";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { getDate } from "../../utils/getDate";
 import { loadStatistic } from "../../store/vote/actions";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import style from "../../App.module.css";
+import { getDate } from "../../utils/getDate";
+
 
 const Main = (props) => {
   const [startDate, setStartDate] = useState(new Date());

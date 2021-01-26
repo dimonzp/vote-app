@@ -6,7 +6,7 @@ const logsServices = {
     return await Logs.find();
   },
   async addNewLog(url, json = "") {
-    const date = getDate(true);
+    const date = getDate(new Date(), true);
     await Logs.create({ url, json, date });
   },
 };

@@ -7,17 +7,13 @@ const voteService = {
     Vote.create({ number, date });
   },
   async getStatistic(date) {
-    const numbersOfDate = await Vote.find({ date: new Date(date) });
-    let stat = [];
-    numbersOfDate.forEach((vote) => {
-      let num = stat.find((i) => i.number === vote.number) || {};
-      if (vote.number === num.number) {
-        stat[stat.indexOf(num)].count++;
-      } else {
-        stat.push({ number: vote.number, count: 1 });
-      }
-    });
-    return stat;
+    
+    const stat = await Vote.aggregate([
+      { $match: { date: new Date(date) } },
+      { $group: { _id: "$number", count: { $sum: 1 } } },
+    ]);
+
+    return stat.map((n) => ({ number: n._id, count: n.count }));
   },
 };
 
