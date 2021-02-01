@@ -1,5 +1,5 @@
 const Logs = require("../models/Logs");
-const getDate = require("../utils/getDate");
+const getDate = require("../../client/src/utils/getDate");
 
 const logsServices = {
   async getAllLogs() {

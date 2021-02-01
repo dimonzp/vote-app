@@ -8,28 +8,18 @@ import { Redirect } from "react-router-dom";
 
 const SendVote = (props) => {
   const [number, setNumber] = useState(null);
-  const [isRedirect, setIsRedirect] = useState(false);
-  const [isLoading, setLoading] = useState(false);
 
   let numbers = [];
   for (let i = 0; i < 10; i++) {
     numbers.push(i);
-    
   }
-
-  const afterClick = () => {
-    setIsRedirect(true);
-    setLoading(false);
-  };
 
   const sendVote = (e) => {
     e.preventDefault();
     props.setMessage("");
     const value = Number(e.target.value);
-    setLoading(true);
     setNumber(value);
     props.putVote(value);
-    setTimeout(afterClick, 3000);
   };
 
   return (
@@ -40,7 +30,7 @@ const SendVote = (props) => {
         </Badge>
       </div>
 
-      {isRedirect ? (
+      {props.isRedirect ? (
         <Redirect to="/" />
       ) : (
         <div>
@@ -51,8 +41,7 @@ const SendVote = (props) => {
                   key={num}
                   size="lg"
                   variant="outline-primary"
-                  onClick={!isLoading ? sendVote : null}
-                  disabled={isLoading}
+                  onClick={sendVote}
                   value={num}
                 >
                   {num}
@@ -72,8 +61,8 @@ const SendVote = (props) => {
 };
 
 let mapStateToProps = (state) => {
-  const { message } = state.votePage;
-  return { message };
+  const { message, isRedirect } = state.votePage;
+  return { message, isRedirect };
 };
 
 export default compose(connect(mapStateToProps, { putVote, setMessage }))(

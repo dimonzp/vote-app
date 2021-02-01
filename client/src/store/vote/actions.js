@@ -5,8 +5,15 @@ export const LOAD_STATISTIC = "LOAD_STATISTIC";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const SET_STATISTIC_TO_STATE = "SET_STATISTIC_TO_STATE";
 
+export const SET_IS_REDIRECT = "SET_IS_REDIRECT";
+
 export const putVote = (number) => ({ type: PUT_VOTE, number });
 export const loadStatistic = (date) => ({ type: LOAD_STATISTIC, date });
+
+export const setIsRedirect = (isRedirect) => ({
+  type: SET_IS_REDIRECT,
+  isRedirect,
+});
 
 export const setMessage = (message) => ({ type: SET_MESSAGE, message });
 export const setVotesToState = (votes) => ({

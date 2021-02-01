@@ -1,5 +1,5 @@
 const Vote = require("../models/Vote");
-const getDate = require("../utils/getDate");
+const getDate = require("../../client/src/utils/getDate");
 
 const voteService = {
   async addVote(number) {
